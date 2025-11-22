@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>EV Smart Route & Charging Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div class="login-page" id="loginPage">
+        <div class="login-card">
+            <h2>Login to EV Assistant</h2>
+            <p>Select your role and continue</p>
+            <label for="roleSelect">Role</label>
+            <select id="roleSelect">
+                <option value="user">User (EV Driver)</option>
+                <option value="owner">Owner (Station Manager)</option>
+                <option value="admin">Admin (Verifier)</option>
+            </select>
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="Enter username" />
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter password" />
+            <button id="loginBtn">Login</button>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div class="wrapper" id="mainApp" style="display:none;">
+        <header>
+            <div>
+                <h1>EV Smart Route &amp; Charging Assistant</h1>
+                <p class="small">Owner-verified charging station directory + smart trip planner.</p>
+            </div>
+            <div>
+                <span class="tag" id="userTag"></span>
+                <button id="logoutBtn" class="logout">Logout</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Battery Range Calculator</h2>
+            <div class="row">
+                <div>
+                    <label>Full-charge range (km)</label>
+                    <input id="fullRange" type="number" value="400" />
+                </div>
+                <div>
+                    <label>Current battery (%)</label>
+                    <input id="batteryPercent" type="number" value="60" />
+                </div>
+            </div>
+            <button id="calcRangeBtn">Calculate Range</button>
+            <div id="rangeResult" class="result">Range: –</div>
+        </section>
+
+        <section class="card">
+            <h2>Smart Route Feasibility Check</h2>
+            <label>Trip distance (km)</label>
+            <input id="tripDistance" type="number" value="150" />
+            <button id="checkTripBtn">Check Trip</button>
+            <div id="tripResult" class="result">Status: –</div>
+        </section>
+
+        <section class="card">
+            <h2>Charging Station Directory</h2>
+            <input id="searchStations" placeholder="Search by name or city..." />
+            <table id="stationsTable">
+                <thead>
+                    <tr>
+                        <th>Station</th>
+                        <th>City</th>
+                        <th>Owner</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section class="card" id="ownerTools" style="display:none;">
+            <h2>Owner-Based Station Management</h2>
+            <input id="newName" placeholder="Station Name" />
+            <input id="newCity" placeholder="City" />
+            <input id="newOwner" placeholder="Owner Name" />
+            <button id="addStationBtn">Add Station</button>
+        </section>
+
+        <section class="card">
+            <h2>Station Map</h2>
+            <div id="mapTitle" class="result">No station selected</div>
+            <iframe id="mapFrame" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
